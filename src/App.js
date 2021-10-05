@@ -11,7 +11,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log("App - reducer is hooked up. state: ", state);
 
-  const handleChange = () => {
+  const handleClick = () => {
     dispatch(addOne(1))
   }
 
@@ -38,7 +38,7 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={() => handleChange(1)}/>
+              <CalcButton value={1} onClick={() => handleClick(1)}/>
               <CalcButton value={2}/>
               <CalcButton value={3}/>
             </div>
