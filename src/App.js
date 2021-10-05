@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import reducer, { initialState } from './reducers';
+import { addOne } from './actions';
 
 import './App.css';
 
@@ -9,6 +10,10 @@ import CalcButton from './components/CalcButton';
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log("App - reducer is hooked up. state: ", state);
+
+  const handleChange = () => {
+    dispatch(addOne(1))
+  }
 
   return (
     <div className="App">
@@ -20,7 +25,7 @@ function App() {
         <div className="col-md-12 d-flex justify-content-center">
           <form name="Cal">
             
-            <TotalDisplay value={0}/>
+            <TotalDisplay value={state.total}/>
             <div className="row details">
               <span id="operation"><b>Operation:</b> X</span>
               <span id="memory"><b>Memory:</b> 0</span>
@@ -33,7 +38,7 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1}/>
+              <CalcButton value={1} onClick={() => handleChange(1)}/>
               <CalcButton value={2}/>
               <CalcButton value={3}/>
             </div>
